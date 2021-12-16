@@ -15,8 +15,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
-        
+        $tasks = Task::orderBy('id','desc')->paginate(20);
         return view('tasks.index',[
             'tasks' => $tasks,  
             ]);
@@ -110,7 +109,7 @@ class TasksController extends Controller
         $task -> content = $request->content;
         $task -> status = $request->status;
         $task -> save();
-        
+            
         return redirect('/');
     }
 

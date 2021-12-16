@@ -30,8 +30,12 @@
             <h1 class="text-dark p-2 h2 border-top ">No Task</h1>
             
     @endif
-
-    <span class = m-2>{!! link_to_route('tasks.create', 'Create a task', [], ['class' => 'btn btn-info mt-2']) !!}</span>
-
+    <div class = "row  ">
+        <div class = "col-md-12">
+            <div class= "d-flex justify-content-center">{{ $tasks -> links() }}</div>
+            <span class = "d-flex justify-content-end">{!! link_to_route('tasks.create', 'Create a task', [], ['class' => 'btn btn-info']) !!}</span>
+        </div>
+    </div>
+    
 @endsection
 
