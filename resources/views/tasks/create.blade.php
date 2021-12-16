@@ -13,8 +13,8 @@
 
                     <div class="col-md-8 ">
                         <div class = "row">
-
-                            {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!}
+                            {!! Form::text('content',null,['class'=>'form-control col-md-8'])!!}
+                    {{--    {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!} --}}
                              <span class = "col-md-1"></span>
                             {!! Form::submit('Add',['class'=>'btn btn-primary btn float-right col-md-3'])!!}
                             {!! Form::close() !!} 
@@ -23,7 +23,7 @@
                     </div>
 
 
-                 
+
 
     <div class="row">
         <span class = "col-md-4"></span>

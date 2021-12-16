@@ -12,8 +12,8 @@
 
                     <div class="col-md-8 ">
                         <div class = "row">
-
-                            {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!}
+                            {!! Form::text('content',null,['class'=>'form-control col-md-8'])!!}
+                        {{--{!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!} --}}
                              <span class = "col-md-1"></span>
                             {!! Form::submit('Edit',['class'=>'btn btn-primary btn float-right col-md-3'])!!}
                             {!! Form::close() !!} 
@@ -26,7 +26,7 @@
 
     <div class="row">
         <span class = "col-md-4"></span>
-        <span class = "col-md-3 mt-2 col text-center">{!! link_to_route('tasks.index', 'Cancel', [], ['class' => 'btn btn-secondary col-md-4']) !!}</span> 
+        <span class = "col-md-3 mt-2 col text-center">{!! link_to_route('tasks.show', 'Cancel', ['task' => $task->id], ['class' => 'btn btn-secondary col-md-4']) !!}</span> 
     </div>
 @endsection
 
