@@ -13,6 +13,9 @@
             {!! Form::label('content',"Description",['class'=>'col-md-2 h4  justify-content-end ml-2'])!!}
             {!! Form::text('content',null,['class'=>'form-control col-md-8 ml-2'])!!}
             {{--    {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!} --}}
+            
+            {!! Form::label('status',"Status",['class'=>'col-md-2 h4  justify-content-end ml-2'])!!}
+            {!! Form::text('status',null,['class'=>'form-control col-md-8 ml-2'])!!}
             <br />
             <div class="col-md-6 "></div>        
             {!! Form::submit('Edit',['class'=>'btn btn-primary col-md-2  ml-2 mt-2'])!!}

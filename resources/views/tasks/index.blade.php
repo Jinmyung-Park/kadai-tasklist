@@ -5,20 +5,22 @@
     <h1 class="text-dark display-4">TaskList</h1>
     <br />
     @if(count($tasks) > 0)
-        <table class = "table talbe-striped table-sm">
+        <table class = "table talbe-striped table-sm col-md-12">
             <thead>
                 <tr>
                     <th class= "col-md-2">Task No.</th>
                     <th class= "col-md-4">Task Title</th>
-                    <th class= "col-md-6">Task Info</th>
+                    <th class= "col-md-3">Task Info</th>
+                    <th class= "col-md-1">Task status</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($tasks as $task)
                 <tr>
-                    <td>{!! link_to_route('tasks.show', $task->id, ['task' => $task->id]) !!}</td>
-                    <td>{{ $task->title }}</td>
-                    <td>{{ $task->content }}</td>
+                    <td class = "align-middle">{!! link_to_route('tasks.show', $task->id, ['task' => $task->id])!!}</td>
+                    <td class = "align-middle">{{ $task->title }}</td>
+                    <td class = "align-middle">{{ $task->content }}</td>
+                    <td class = "align-middle text-center">{{ $task->status }}</td>
                 </tr>
             </tbody>
                 @endforeach
