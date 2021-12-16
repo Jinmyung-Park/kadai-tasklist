@@ -9,10 +9,14 @@
         <table class="table table-bordered">
             <tr>
                 <th class= "col-md-2">No.</th>
-                <th class= "col-md-10">{{ $task->id }}</td>
+                <td class= "col-md-10">{{ $task->id }}</td>
             </tr>
             <tr>
-                <th>Task Info.</th>
+                <th>Title</th>
+                <td>{{ $task->title }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
                 <td>{{ $task->content }}</td>
             </tr>
         </table>

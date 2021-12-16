@@ -4,32 +4,23 @@
 
     <h1 class="mt-4 pb-3 border-bottom">Create New Task</h1>
     <br />
-    
-            {!! Form::model($task,['route' => 'tasks.store' ,'class'=>'form-inline row'])!!}
+  
 
-                    <div class="col-md-4  align-self-baseline mt-2 h3">
-                    {!! Form::label('content',"Description :")!!}
-                    </div>
+            {!! Form::model($task,['route' => 'tasks.store' ,'class'=>'form-inline row col-md-12 m-1 '])!!}
 
-                    <div class="col-md-8 ">
-                        <div class = "row">
-                            {!! Form::text('content',null,['class'=>'form-control col-md-8'])!!}
-                    {{--    {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!} --}}
-                             <span class = "col-md-1"></span>
-                            {!! Form::submit('Add',['class'=>'btn btn-primary btn float-right col-md-3'])!!}
-                            {!! Form::close() !!} 
-                            </div>
-                        </div>
-                    </div>
+            {!! Form::label('title',"Task title",['class'=>'col-md-2 h4  justify-content-end ml-2'])!!}
+            {!! Form::text('title',null,['class'=>'form-control col-md-8 ml-2'])!!}
 
+            {!! Form::label('content',"Description",['class'=>'col-md-2 h4  justify-content-end ml-2'])!!}
+            {!! Form::text('content',null,['class'=>'form-control col-md-8 ml-2'])!!}
+            {{--    {!! Form::text('content',null,['class'=>'form-control col-md-8','required'])!!} --}}
+            <br />
 
+            <div class="col-md-6 "></div>
+            {!! Form::submit('Add',['class'=>'btn btn-primary  col-md-2  ml-2 mt-2'])!!}
+            {!! link_to_route('tasks.index', 'Cancel', [], ['class' => 'btn btn-secondary col-md-2 ml-2 mt-2']) !!}
+            {!! Form::close() !!} 
 
-
-    <div class="row">
-        <span class = "col-md-4"></span>
-        <span class = "col-md-3 mt-2 col text-center">{!! link_to_route('tasks.index', 'Cancel', [], ['class' => 'btn btn-secondary col-md-4']) !!}</span> 
-    </div>
- 
 @endsection
 
 

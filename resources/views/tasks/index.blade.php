@@ -8,14 +8,16 @@
         <table class = "table talbe-striped table-sm">
             <thead>
                 <tr>
-                    <th class= "col-md-2">Task Number</th>
-                    <th class= "col-md-10">Task Info</th>
+                    <th class= "col-md-2">Task No.</th>
+                    <th class= "col-md-4">Task Title</th>
+                    <th class= "col-md-6">Task Info</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($tasks as $task)
                 <tr>
                     <td>{!! link_to_route('tasks.show', $task->id, ['task' => $task->id]) !!}</td>
+                    <td>{{ $task->title }}</td>
                     <td>{{ $task->content }}</td>
                 </tr>
             </tbody>
