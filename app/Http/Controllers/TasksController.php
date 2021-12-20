@@ -15,17 +15,23 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('id','desc')->paginate(20);
-        return view('tasks.index',[
-            'tasks' => $tasks,  
-            ]);
+        $data = [];
+       if (\Auth::check()) {
+        $user = \Auth::user();
+        $tasks = $user -> tasks() -> orderBy('created_at', 'desc') -> paginate(10);
+
+        $data = [
+                'user' => $user,
+                'tasks' => $tasks,
+            ];
+
+        return view('tasks.index',$data);
+       }
+       else{
+        return view('tasks.index');
+       }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $task = new Task;
@@ -49,9 +55,13 @@ class TasksController extends Controller
             'status' => 'required|max:10',            
         ]);
         $task = new Task;
+        $user = \Auth::user();
+        
         $task -> title = $request -> title;
         $task -> content = $request -> content;
         $task -> status = $request -> status;
+        $task -> user_id = $user -> id ;
+        
         $task -> save();
         
         return redirect('/');
@@ -65,11 +75,12 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        $task = Task::findOrFail($id);
-
-        return view('tasks.show', [
-            'task' => $task,
-        ]);
+        $task = \App\Task::findOrFail($id);
+        if (\Auth::id() === $task->user_id) {
+            return view('tasks.show', ['task' => $task,]);
+        }else{
+            return view('tasks.error');
+             }
     }
 
     /**
@@ -80,13 +91,12 @@ class TasksController extends Controller
      */
     public function edit($id)
     {
-        // idの値でメッセージを検索して取得
-        $task = Task::findOrFail($id);
-
-        // メッセージ詳細ビューでそれを表示
-        return view('tasks.edit', [
-            'task' => $task,
-        ]);
+      $task = \App\Task::findOrFail($id);
+        if (\Auth::id() === $task->user_id) {
+        return view('tasks.edit', ['task' => $task,]);
+        }else{
+            return view('tasks.error');
+             }
     }
 
     /**
@@ -121,8 +131,12 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        $task = Task::findOrFail($id);
-        $task -> delete();
+        $task = \App\Task::findOrFail($id);
+          if (\Auth::id() === $task->user_id) {
+              $task->delete();
+        }else{
+            return view('tasks.error');
+             }
         return redirect('/');
-    }
+        }
 }

@@ -10,7 +10,18 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
-                <li class="nav-item">{!! link_to_route('tasks.create', 'Create a Task', [], ['class' => 'nav-link']) !!}</li>
+                
+            @if (Auth::check())
+    
+                <li class="nav-item">{!! link_to_route('tasks.create', 'Create a Task', [], ['class' => 'nav-link  font-italic']) !!}</li>
+                <li class="nav-item">{!! link_to_route('logout.get', 'Logout', [], ['class' => 'nav-link font-weight-bold']) !!}</li> 
+            
+            @else
+    
+                <li class="nav-item">{!! link_to_route('signup.get', 'Sign Up', [], ['class' => 'nav-link']) !!}</li>
+   
+            @endif
+
             </ul>
         </div>
     </nav>

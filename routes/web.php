@@ -12,4 +12,16 @@
 */
 
 Route::get('/','TasksController@index');
-Route::resource('tasks', 'TasksController');
+
+Route::group(['middleware'=> ['auth']],function(){
+    Route::resource('tasks', 'TasksController');
+});
+
+
+Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');   //url adress , 実行するfunction指定　, -> 単純にルーティングの名前指定(linkなどで使用)
+Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');             //register blade.php で from送信先が'route' => 'signup.post'に指定されている　つまり　Auth\RegisterController@registerが実行される
+
+
+Route::get('login','Auth\LoginController@showLoginForm')->name('login');
+Route::post('login','Auth\LoginController@login')->name('login.post');
+Route::get('logout','Auth\LoginController@logout')->name('logout.get');
