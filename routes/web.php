@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/','TasksController@index');
+Route::get('/','TasksController@index')->name('main.get');
 
 Route::group(['middleware'=> ['auth']],function(){
     Route::resource('tasks', 'TasksController');
