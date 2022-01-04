@@ -27,7 +27,7 @@
 
     @if (Auth::id() == $task -> user_id)
         {!! Form::open(['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
-        {!! Form::submit('Delect', ['class' => 'btn btn-danger  m-1 pl-3 pr-3 border']) !!}
+        {!! Form::submit('Delete', ['class' => 'btn btn-danger  m-1 pl-3 pr-3 border']) !!}
         {!! Form::close() !!}
     @endif
     {!! link_to_route('tasks.index', 'Cancel', [], ['class' => 'btn btn-secondary m-1 pl-3 pr-3 border']) !!} 
